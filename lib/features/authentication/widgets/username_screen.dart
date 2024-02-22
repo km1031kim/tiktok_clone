@@ -34,7 +34,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
     super.dispose();
   }
 
-  void onNextTap() {
+  void _onNextTap() {
     if (_username.isEmpty) {
       return;
     } else {
@@ -97,7 +97,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
             ),
             Gaps.v16,
             GestureDetector(
-              onTap: onNextTap,
+              onTap: _onNextTap,
               child: FormButton(disabled: _username.isEmpty),
             )
           ],
