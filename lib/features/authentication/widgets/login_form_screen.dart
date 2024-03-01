@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/widgets/form_button.dart';
+import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 
 class LoginFormScreen extends StatefulWidget {
   const LoginFormScreen({super.key});
@@ -19,7 +20,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
     if (_formKey.currentContext != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
-        //print(formData.entries);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const InterestsScreen(),
+          ),
+        );
       }
     }
   }
@@ -36,12 +41,25 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
             children: [
               Gaps.h28,
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Email',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
                 ),
                 validator: (value) {
-                  // value는 TextFormField의 값임.
-                  // 에러 메세지를 반환하거나 안 할 수 있음
+                  if (value != null && value.isEmpty) {
+                    // value는 TextFormField의 값임.
+                    // 에러 메세지를 반환하거나 안 할 수 있음
+                    return "Please write your email";
+                  }
                   return null;
                 },
                 onSaved: (newValue) => {
@@ -50,13 +68,24 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
               ),
               Gaps.v16,
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Password',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
                 ),
                 validator: (value) {
+                  if (value != null && value.isEmpty) {}
                   // value는 TextFormField의 값임.
                   // 에러 메세지를 반환하거나 안 할 수 있음
-                  return null;
+                  return "Please write your password";
                 },
                 onSaved: (newValue) => {
                   if (newValue != null) {formData['password'] = newValue}
