@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/onboarding/tutorial_screen.dart';
 
 class InterestButton extends StatefulWidget {
   const InterestButton({
@@ -17,7 +18,9 @@ class _InterestButtonState extends State<InterestButton> {
   bool _isSelected = false;
 
   void _onTap() {
-    _isSelected = !_isSelected;
+    setState(() {
+      _isSelected = !_isSelected;
+    });
   }
 
   @override
