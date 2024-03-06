@@ -20,10 +20,13 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
     if (_formKey.currentContext != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
-        Navigator.of(context).push(
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const InterestsScreen(),
           ),
+          (route) {
+            return false;
+          },
         );
       }
     }
@@ -82,10 +85,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   ),
                 ),
                 validator: (value) {
-                  if (value != null && value.isEmpty) {}
+                  if (value != null && value.isEmpty) {
+                    return "Please write your password";
+                  }
+                  return null;
                   // value는 TextFormField의 값임.
                   // 에러 메세지를 반환하거나 안 할 수 있음
-                  return "Please write your password";
                 },
                 onSaved: (newValue) => {
                   if (newValue != null) {formData['password'] = newValue}

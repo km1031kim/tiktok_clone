@@ -40,7 +40,6 @@ class _InterestsScreenState extends State<InterestsScreen> {
   @override
   void dispose() {
     // TODO: implement dispose
-
     _scrollController.dispose();
     super.dispose();
   }
@@ -170,6 +169,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: Sizes.size16,
+                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
